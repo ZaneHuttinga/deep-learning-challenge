@@ -9,7 +9,7 @@ In an attempt to provide such a tool, this project uses machine learning and neu
 ## Results
 We make two attempts to create a viable model. The initial model is produced in the Jupyter Notebook 'AlphabetSoupCharity.ipynb'. We begin by importing the necessary Python libraries (in particular sklearn and tensorflow, which we will use to create and run the neural network).
 
-![DataFrame](Images/DataFrame.png)
+![DataFrame](Images/DataFrame.PNG)
 
 ## Summary
 
