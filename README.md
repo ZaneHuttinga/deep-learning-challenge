@@ -11,5 +11,40 @@ We make two attempts to create a viable model. The initial model is produced in 
 
 ![DataFrame](Images/DataFrame.PNG)
 
+For our purposes, the columns serve the following purposes:
+* 'IS_SUCCESSFUL' is the target variable (y). This is what we hope to be able to predict.
+* 'APPLICATION_TYPE', 'AFFILIATION', 'CLASSIFICATION', 'USE_CASE', 'ORGANIZATION', 'STATUS', 'INCOME_AMT', 'SPECIAL_CONSIDERATIONS', 'ASK_AMT' are the features (X); these are the criteria by which we hope to predict the target.
+* We have no use for the columns 'EIN' and 'NAME' since these are unique to each row; they're not helpful for making predictions because a new venture we want to evaluate will not match these.
+
+As part of our preparation of the dataset, we group the least common application types under the banner 'Other'.
+
+![Binning Process](Images/Binning.PNG)
+
+We perform an analogous step for the classification.
+
+In order to set up the neural network, we must convert the categorial data (such as application type and classification) to numerical data. We do this using the Pandas function 'gut_dummies'.
+
+![get_dummies](Images/get_dummies.PNG)
+
+Note that each categorical column is replaced by a set of columns with a 1 in each row that formerly had the appropriate value.
+
+Now we are able to set up our target and features. We further split the data into training and test datasets for the neural network.
+
+![Variable selection](Images/Variables.PNG)
+
+We then set up the neural network itself. In this initial attempt, we make the following choices:
+* Two hidden layers between the input and output layers. We start with a low number in the hopes of maintaining relative computational ease.
+* Into the two hidden layers, we insert 80 and 30 neurons, with 1 in the output layer. We similarly keep the number of neurons low here for efficiency purposes.
+* For each hidden layer, the activation function is the very standard Rectified Linear Unit (ReLU). This function changes negative values to 0 and leaves positive values unchanged. It is a common default for hidden layers.
+* For the output layer, the activiation function is the Sigmoid, which maps data to a range between 0 and 1. This is a common function for binary outputs, as we have here.
+
+![Variable selection](Images/Model_Setup.PNG)
+
+This initial attempt yields a somewhat disappointing accuracy of 0.7285. Our goal accuracy is 0.75.
+
+![Variable selection](Images/Accuracy_1.PNG)
+
+
+
 ## Summary
 
