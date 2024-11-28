@@ -44,7 +44,18 @@ This initial attempt yields a somewhat disappointing accuracy of 0.7285. Our goa
 
 ![Variable selection](Images/Accuracy_1.PNG)
 
+Because of this failure in the initial model, we attempt several improvements in the Jupyter Notebook 'AlphabetSoupCharity_Optimization'. The attempted refinements are
+* Splitting the 'Other' groups in the 'APPLICATION_TYPE' and 'CLASSIFICATION' columns into two and three separate groups, respectively. This should, in theory, give the model a more accurate picture of the dataset.
+* Adding a third hidden layer between the input and output. In general, this should increase the accuracy because it allows the model to learn more complex patterns.
+* Adding more nodes to each hidden layer (for totals of 120, 100 and 50). Again, this generally allows the model to learn more complex patterns.
+* Changing the activation function in the hidden layers from ReLU to Tanh (the hyperbolic tangent function). This function is a less common function that maps data to a range between -1 and 1. Unlike the other three steps, this actually decreased the accuracy of the model, so it has been undone in the Jupyter Notebook.
 
+Unfortunately, these changes only lead to a marginal improvement in accuracy. The result is 0.7325. This is better, but still below the goal of 0.75.
+
+![Variable selection](Images/Accuracy_2.PNG)
 
 ## Summary
 
+Unfortunately, the two versions of the model fail to meet the goal accuracy, and I would therefore recommend that Alphabet Soup pursue a different model. Some things to consider are
+* Adding even more hiddne layers and nodes. There is a tradeoff with computational cost, but it might be possible to achieve the desired accuracy before the network becomes too complex to be practical.
+* Increasing or decreasing the number of iterations (epochs). Both versions of the model use 100. It might be the case that letting the model run longer will improve the accuracy. However, this is not always the case; it is worth noting that neither model seems to follow a linear trajectory in its accuracy at each step. That is, the model is not consistently improving its accuracy with each iteration. It may well be that adding epochs will not help with accuracy; on the other hand, for analogous reasons, decreasing the number of epochs might achieve the goal of 0.75. Again, however, there is no clear point at which the accuracy seems to peak and the consistently fall, so it's uncertain whether this would really happen. Furthermore, since the model does not exceed 0.75 accuracy at any individual step, changing the number of epochs will not hit the goal without other steps (such as changing the number of layers or nodes).
